@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js">
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUITE/fonts/static/woff2/SUITE.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e110d43ad3.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="./img/favicon.png">
+    <title> TWEE Mainpage Redesign </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'SUITE', sans-serif;
+            color: #333;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #Wrap {
+            width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* header 영역 */
+        #header {
+            width: 100%;
+            padding-top: 30px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h1 img {
+            width: 120px;
+        }
+
+        #util {
+            margin-top: 10px;
+            color: rgb(70, 70, 70);
+            font-size: 14px;
+        }
+
+        .notice {
+            float: left;
+            margin-left: 60px;
+        }
+
+        .notice>span {
+            margin-right: 10px;
+        }
+
+        .login {
+            float: right;
+            margin-right: 60px;
+        }
+
+        .login>span {
+            margin-right: 10px;
+        }
+
+        .login>span:nth-of-type(2)>a:nth-of-type(2) {
+            color: rgb(175, 146, 173);
+        }
+
+        .notice>span:hover,
+        .login>span:hover {
+            color: rgb(175, 146, 173);
+        }
+
+        #menu {
+            width: 1530px;
+            height: 50px;
+            /* background-color: rgb(255, 236, 254); */
+            border-top: 1px solid rgb(175, 146, 173);
+            border-bottom: 1px solid rgb(175, 146, 173);
+            color: rgb(24, 24, 24);
+            margin: 40px auto 10px;
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #menu>.mainmenu>li:first-of-type,
+        #menu>.mainmenu>li:nth-of-type(2) {
+            font-weight: 800;
+            color: rgb(175, 146, 173);
+        }
+
+        .mainmenu>li {
+            float: left;
+            width: 139px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .mainmenu a {
+            display: block;
+            width: 100%;
+        }
+
+        .mainmenu a:hover {
+            background-color: white;
+        }
+
+        .submenu>li {
+            height: 50px;
+            background-color: white;
+            display: none;
+            font-size: 14px;
+        }
+
+        .submenu a {
+            height: 100%;
+            text-decoration: 0.5px underline rgb(175, 146, 173);
+            text-underline-offset: 5px;
+        }
+
+        .submenu a:hover {
+            background-color: rgb(224, 216, 224);
+        }
+
+        /* .mainmenu>li:hover .submenu>li {
+            display: block;
+        } */
+
+        /* main 영역 */
+        #main {
+            width: 100%;
+            height: 630px;
+            position: relative;
+            top: 80px;
+            background-color: skyblue;
+            overflow: hidden;
+        }
+
+        #main>h1 {
+            font-size: 80px;
+            color: white;
+            left: 60px;
+            line-height: 100px;
+            padding-top: 350px;
+            font-family: 'Tangerine', cursive;
+            font-weight: 200;
+            box-sizing: border-box;
+            position: absolute;
+        }
+
+
+        #main ul {
+            width: 300%;
+            animation: leftmove 15s infinite;
+        }
+
+        #main li {
+            width: calc(100%/3);
+            height: 630px;
+            float: left;
+        }
+
+        #main li:first-of-type {
+            background: url(./img/main.png) center / cover;
+        }
+
+        #main li:nth-of-type(2) {
+            background: url(./img/main2.png) center / cover;
+        }
+
+        #main>ul>li:last-of-type {
+            background: url(./img/main3.jpg) center / cover;
+        }
+
+        @keyframes leftmove {
+            20% {
+                margin-left: 0;
+            }
+
+            50% {
+                margin-left: -100%;
+            }
+
+            80% {
+                margin-left: -200%;
+            }
+        }
+
+        /* article 영역 */
+        #article {
+            width: 1520px;
+            height: 1780px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* article01영역 */
+        .ar01 {
+            width: 100%;
+            padding-top: 120px;
+            box-sizing: border-box;
+        }
+
+        .ar01>h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 40px;
+            color: rgb(175, 146, 173);
+            padding-bottom: 30px;
+        }
+
+        .more {
+            line-height: 12.5px;
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+
+        .more:hover {
+            opacity: 0.8;
+        }
+
+        .more p {
+            float: right;
+            margin-right: 5px;
+        }
+
+        .more img {
+            width: 15px;
+            height: 15px;
+            float: right;
+        }
+
+        .best {
+            width: 1520px;
+            height: 650px;
+        }
+
+        .photo01 {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+
+        }
+
+        .photo01>div img {
+            width: 230px;
+            height: 300px;
+        }
+
+        .photo01>div {
+            float: left;
+            margin-right: 28px;
+        }
+
+        .photo01>div:last-of-type {
+            margin-right: 0;
+        }
+
+        .photo01 h3 {
+            border-bottom: 1px solid rgb(175, 146, 173);
+            padding: 10px 0 10px 0;
+            margin: 0 0 5px 5px;
+            text-align: left;
+            box-sizing: border-box;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .photo01>div img:hover {
+            opacity: 0.8;
+        }
+
+        .detail01 {
+            width: 100%;
+            height: 200px;
+        }
+
+        .detail01>div {
+            width: 230px;
+            height: 200px;
+            float: left;
+            margin-right: 28px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .detail01>div:last-of-type {
+            margin-right: 0;
+        }
+
+        .detail01 p:nth-of-type(1),
+        .detail01 p:nth-of-type(2),
+        .detail01 p:nth-of-type(4),
+        .detail01 p:nth-of-type(5) {
+            font-size: 14px;
+        }
+
+        .detail01 p:first-of-type {
+            color: rgb(175, 146, 173);
+            margin-bottom: 5px;
+        }
+
+        .detail01 p:nth-of-type(3) {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 5px 0;
+            /* background-color: rgb(196, 201, 206); */
+            border: 2px dashed rgb(175, 146, 173);
+        }
+
+        .fa-solid {
+            color: rgb(175, 146, 173);
+        }
+
+        .detail01 p:nth-of-type(4) {
+            margin-bottom: 5px;
+        }
+
+        .detail01>div:last-of-type>p:first-of-type {
+            margin-top: 55px;
+        }
+
+        .detail01>div:first-of-type>p:nth-of-type(2) {
+            margin-top: 30px;
+        }
+
+        .detail01 p:nth-of-type(3):hover {
+            color: rgb(175, 146, 173);
+        }
+
+        .detail01>div:nth-of-type(3)>p:nth-of-type(5) {
+            margin-top: 30px;
+        }
+
+        .price01 {
+            width: 100%;
+            height: 100px;
+        }
+
+        .price01>div {
+            float: left;
+            width: 230px;
+            height: 100%;
+            line-height: 1.8;
+            margin-right: 28px;
+            padding-top: 10px;
+            box-sizing: border-box;
+            border-top: 1px solid rgb(175, 146, 173);
+        }
+
+        .price01>div:last-of-type {
+            margin-right: 0;
+        }
+
+        .price01>div:first-of-type,
+        .price01>div:last-of-type {
+            padding-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .price01 p>span:first-of-type {
+            color: rgb(175, 146, 173);
+            text-decoration: line-through;
+            margin-right: 5px;
+        }
+
+
+        /* article02영역 */
+        .ar02 {
+            width: 100%;
+            height: 550px;
+            margin: 100px auto 0;
+        }
+
+        /* article02_ 이벤트|쿠폰 영역 */
+        .event {
+            width: 485px;
+            height: 550px;
+            margin-right: 10px;
+            float: left;
+        }
+
+        .event>h2 {
+            font-size: 18px;
+            font-weight: 600;
+            padding-top: 30px;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+
+        .ar02 h2 {
+            color: rgb(175, 146, 173);
+        }
+
+        .couponWrap {
+            width: 100%;
+            height: 467px;
+        }
+
+        .coupon01 img {
+            width: 100%;
+            height: 115px;
+            margin-bottom: 5px;
+        }
+
+        .coupon02 img {
+            width: 240px;
+            height: 343px;
+            float: left;
+        }
+
+        .coupon03 img {
+            width: 240px;
+            height: 343px;
+            float: right;
+        }
+
+
+        /* article02_오프라인 스토어 영역 */
+
+        .offline {
+            width: 400px;
+            height: 539px;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .offline>h2 {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 30px 0;
+            box-sizing: border-box;
+        }
+
+        .offline>div {
+            width: 100%;
+            height: 468px;
+            overflow-y: scroll;
+            border: 1px solid rgb(175, 146, 173);
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .offline>div mark {
+            background-color: rgb(224, 216, 224);
+        }
+
+        /* article02_brand crew 영역 */
+        .brand {
+            width: 615px;
+            height: 539px;
+            float: right;
+            padding-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .brand>h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .brand>div {
+            width: 615px;
+            height: 468px;
+            overflow: hidden;
+            background-color: rgb(227, 212, 226);
+        }
+
+        .brand video {
+            margin-top: 55px;
+        }
+
+        /* ar03 영역 */
+        .ar03 {
+            width: 100%;
+            padding-top: 50px;
+            box-sizing: border-box;
+        }
+
+        .ar03>h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 40px;
+            color: rgb(175, 146, 173);
+            padding-bottom: 30px;
+        }
+
+        .ar03>.more {
+            line-height: 12.5px;
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+
+        .ar03>.more:hover {
+            opacity: 0.8;
+        }
+
+        .ar03>.more p {
+            float: right;
+            margin-right: 5px;
+        }
+
+        .ar03>.more img {
+            width: 15px;
+            height: 15px;
+            float: right;
+        }
+
+        .new {
+            width: 1520px;
+            height: 650px;
+        }
+
+
+        .photo02 {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+
+        }
+
+        .photo02>div img {
+            width: 230px;
+            height: 300px;
+        }
+
+        .photo02>div {
+            float: left;
+            margin-right: 28px;
+        }
+
+        .photo02>div:last-of-type {
+            margin-right: 0;
+        }
+
+        .photo02>div img:hover {
+            opacity: 0.8;
+        }
+
+        .photo02 h3 {
+            border-bottom: 1px solid rgb(175, 146, 173);
+            padding: 10px 0 10px 0;
+            margin: 0 0 5px 5px;
+            text-align: left;
+            box-sizing: border-box;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .detail02 {
+            width: 100%;
+            height: 200px;
+        }
+
+        .detail02>div {
+            width: 230px;
+            height: 200px;
+            float: left;
+            margin-right: 28px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .detail02>div:last-of-type {
+            margin-right: 0;
+        }
+
+        .detail02 p:nth-of-type(1),
+        .detail02 p:nth-of-type(2),
+        .detail02 p:nth-of-type(4),
+        .detail02 p:nth-of-type(5) {
+            font-size: 14px;
+        }
+
+        .detail02 p:first-of-type {
+            color: rgb(175, 146, 173);
+            margin-bottom: 5px;
+        }
+
+        .detail02 p:nth-of-type(3) {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 5px 0;
+            border: 2px dashed rgb(175, 146, 173);
+        }
+
+        .detail02 p:nth-of-type(4) {
+            margin-bottom: 5px;
+        }
+
+        .detail02>div:last-of-type>p:first-of-type {
+            margin-top: 55px;
+        }
+
+        .detail02>div:first-of-type>p:nth-of-type(2) {
+            margin-top: 30px;
+        }
+
+        .detail02>div:nth-of-type(3)>p:nth-of-type(5) {
+            margin-top: 30px;
+        }
+
+        .detail02 p:nth-of-type(3)>a:hover {
+            color: rgb(175, 146, 173);
+        }
+
+        .price02 {
+            width: 100%;
+            height: 100px;
+        }
+
+        .price02>div {
+            float: left;
+            width: 230px;
+            height: 100%;
+            line-height: 1.8;
+            margin-right: 28px;
+            padding-top: 10px;
+            box-sizing: border-box;
+            border-top: 1px solid rgb(175, 146, 173);
+        }
+
+        .price02>div:last-of-type {
+            margin-right: 0;
+        }
+
+        .price02>div:nth-of-type(5),
+        .price02>div:last-of-type {
+            padding-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .price02 p>span:first-of-type {
+            color: rgb(175, 146, 173);
+            text-decoration: line-through;
+            margin-right: 5px;
+        }
+
+
+        /* footer영역 */
+        footer {
+            width: 1600px;
+            height: 400px;
+            background-color: rgb(227, 212, 226);
+            margin: 700px auto 0;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .company {
+            width: 800px;
+            padding-top: 30px;
+            box-sizing: border-box;
+            margin-left: 60px;
+            float: left;
+        }
+
+        .company>p:first-of-type,
+        .company>p:last-of-type {
+            font-weight: 600;
+        }
+
+        .home {
+            width: 800px;
+            padding-top: 50px;
+            margin-left: 60px;
+            clear: both;
+            box-sizing: border-box;
+        }
+
+        .home>span::after {
+            content: " | ";
+            margin: 0 10px;
+        }
+
+        .center {
+            width: 500px;
+            float: right;
+            margin-right: 60px;
+            padding-top: 30px;
+            box-sizing: border-box;
+            line-height: 1.8;
+        }
+
+        .center>p:first-of-type,
+        .center>p:nth-of-type(6) {
+            font-weight: 600;
+        }
+
+        .center>p:nth-of-type(6) {
+            margin-top: 20px;
+        }
+
+        .home a:hover {
+            opacity: 0.8;
+        }
+
+        /* 퀵메뉴 영역 */
+        aside {
+            width: 100px;
+            height: 120px;
+            background-color: rgb(175, 146, 173);
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 800;
+        }
+
+        aside>p {
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+        }
+
+        aside a:hover {
+            background-color: rgb(227, 212, 226);
+            border-radius: 10px;
+        }
+
+        aside a {
+            display: block;
+            width: 100%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Wrap">
+        <!-- 헤더영역_ logo, util, notice, nav(menu) -->
+        <header id="header">
+            <h1><a href="#">
+                    <img src="./img/로고.png"> </a>
+            </h1>
+
+            <div id="util">
+                <p class="notice">
+                    <span> <a href="#"> NOTICE </a> </span>
+                    <span> <a href="#"> CS CENTER </a> </span>
+                    <span> <a href="#"> REVIEW </a> </span>
+                    <span> <a href="#"> EVENT </a> </span>
+                    <span> <a href="#"> NEW MEMBERSHIP! </a> </span>
+                </p>
+                <p class="login">
+                    <span> <a href="#"> LOGIN </a> </span>
+                    <span> <a href="#"> JOIN US </a>
+                        <a href="#"> +10,000 </a> </span>
+                    <span> <a href="#"> MYPAGE </a> </span>
+                    <span> <a href="#"> CART(0) </a> </span>
+                    <span> <a href="#"> ORDER </a> </span>
+                </p>
+            </div>
+            <!--util-->
+            <div id="menu">
+                <!--nav(menu)-->
+                <ul class="mainmenu">
+                    <li><a href="#"> NEW 5% </a></li>
+                    <li><a href="#"> BEST </a></li>
+                    <li><a href="#"> Twith.U </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> OUTER </a></li>
+                            <li> <a href="#"> TOP </a></li>
+                            <li> <a href="#"> DRESS </a></li>
+                            <li> <a href="#"> BOTTOM </a></li>
+                            <li> <a href="#"> ACC </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> OUTER </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> CARDIGAN </a></li>
+                            <li> <a href="#"> JACKETS </a></li>
+                            <li> <a href="#"> COATS </a></li>
+                            <li> <a href="#"> JUMPER </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> KNIT/CARDIGAN </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> KNIT </a></li>
+                            <li> <a href="#"> CARDIGAN </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> TOP </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> TEE </a></li>
+                            <li> <a href="#"> VEST </a></li>
+                            <li> <a href="#"> SLEEVELESS </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> BLOUSE/SHIRTS </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> BLOUSE </a></li>
+                            <li> <a href="#"> SHIRTS </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> PANTS </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> SLACKS </a></li>
+                            <li> <a href="#"> DENIM </a></li>
+                            <li> <a href="#"> COTTON </a></li>
+                            <li> <a href="#"> WIDE </a></li>
+                            <li> <a href="#"> BOOT CUT </a></li>
+                            <li> <a href="#"> STRAIGHT </a></li>
+                            <li> <a href="#"> SHORT </a></li>
+                            <li> <a href="#"> JOGGER </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> DRESS/SKIRT </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> DRESS </a></li>
+                            <li> <a href="#"> SKIRT </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> ETC </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> SHOES </a></li>
+                            <li> <a href="#"> BAG </a></li>
+                            <li> <a href="#"> JEWELRY </a></li>
+                            <li> <a href="#"> ETC </a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"> SPECIAL </a>
+                        <ul class="submenu">
+                            <li> <a href="#"> 1+1 특가 </a></li>
+                            <li> <a href="#"> SET 10% </a></li>
+                            <li> <a href="#"> 오늘출발 </a></li>
+                            <li> <a href="#"> Last Order ~70% </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+
+        <main id="main">
+            <h1>
+                Hello, Summer! <br>
+                Summer Mood Daily Look
+            </h1>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </main>
+
+        <!-- Article영역_ best, event/offline/brand crew, new -->
+        <div id="article">
+            <!--article1 : best items -->
+            <div class="ar01">
+                <!--제목-->
+                <h2> CATEGORY BEST ITEMS :) </h2>
+
+                <!--more, 화살표-->
+                <div class="more">
+                    <a href="#">
+                        <img src="./img/MORE.png" alt="more">
+                        <p> more</p>
+                    </a>
+                </div>
+
+                <!-- 상품 상세설명 -->
+                <div class="best">
+                    <div class="photo01">
+                        <div>
+                            <div>
+                                <a href="#"> <img src="./img/best_아우터.jpg" alt="outer01"></a>
+                            </div>
+                            <h3> OUTER </h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/best_TOP.jpg" alt="top01"></a></div>
+                            <h3> TOP </h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/best_PANTS.jpg" alt="pants01"></a></div>
+                            <h3> PANTS</h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/best_SKIRT.jpg" alt="skirt01"></a></div>
+                            <h3> SKIRT</h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/best_DRESS.jpg" alt="dress01"></a></div>
+                            <h3> DRESS </h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/best_ETC.jpg" alt="etc01"></a></div>
+                            <h3> ETC </h3>
+                        </div>
+                    </div>
+
+                    <div class="detail01">
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% </p>
+                            <p> #제작 [tcd0249] </p>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 리브아 펄 크롭 브이넥 가디건 <i
+                                        class="fa-solid fa-heart fa-beat"></i> </a></p>
+                            <p> (여름가디건,여름니트가디건,<br> 크롭가디건, 진주버튼가디건,골지가디건) </p>
+                            <P> - 6 COLOR - </P>
+                        </div>
+
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% | <i class="xi-gift-o"></i>오늘출발 </p>
+                            <p> 여리숄더 여름 티셔츠 BEST <br> #제작 [tts0438] </p>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 지젤 스퀘어 반팔 티셔츠 <i
+                                        class="fa-solid fa-heart fa-beat"></i></a></p>
+                            <p> (오프숄더,하객룩,반팔티,여름티, <br> 라운드넥,입술넥,보트넥) </P>
+                            <p> - 핑크, 스카이 컬러 추가 - </p>
+                        </div>
+
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% </p>
+                            <P> 기획특가 2가지 기장 슬림핏 부츠컷 [tsl0251] </P>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 디토스 부츠컷 슬랙스 <i
+                                        class="fa-solid fa-heart fa-beat"></i></a> </p>
+                            <p> (슬림핏, 부츠컷, 하객룩) </P>
+                            <P> - TYPE 숏, 롱 | SIZE S, M, L, XL - </P>
+                        </div>
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% </p>
+                            <P> 여름하객룩 <br> [tsk0406] </P>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 보네르 밴딩 플레어 롱 스커트 <i
+                                        class="fa-solid fa-heart fa-beat"></i></a></p>
+                            <p> (훌스커트, A라인롱스커트, <br> 하이웨이스트롱스커트) </P>
+                            <P> </P>
+                        </div>
+                        <div>
+                            <p> <i class="xi-gift-o"></i> 오늘출발 </p>
+                            <P> 랩스타일 <br> #제작 [top0364] </P>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 뮬리 플라워 랩 원피스 <i
+                                        class="fa-solid fa-heart fa-beat"></i></a> </p>
+                            <p> (하객룩,랩스커트,랩원피스,꽃무늬) </P>
+                            <P> </P>
+                        </div>
+                        <div>
+                            <p></p>
+                            <P> [tac0277] </P>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 유키 라운드 벨트 <i
+                                        class="fa-solid fa-heart fa-beat"></i></a></p>
+                            <p> </P>
+                            <P> </P>
+                        </div>
+                    </div>
+
+                    <div class="price01">
+                        <div>
+                            <p></p>
+                            <P>
+                                <span> 28,000 </span>
+                                <span> <i class="xi-trending-down"></i> 24,800 </span>
+                            </P>
+                        </div>
+                        <div>
+                            <p> 5/22(월)까지 41% 할인 </p>
+                            <P>
+                                <span> 25,000 </span>
+                                <span> <i class="xi-trending-down"></i> 14,800 <br> (10,200 할인) </span>
+                            </P>
+                        </div>
+                        <div>
+                            <p> 5/22(월)까지 41% 할인 </p>
+                            <P>
+                                <span> 42,000 </span>
+                                <span> <i class="xi-trending-down"></i>24,800 <br> (17,200 할인) </span>
+                            </P>
+                        </div>
+                        <div>
+                            <p> 5/22(월)까지 신상 추가 할인 </p>
+                            <P>
+                                <span> 45,000 </span>
+                                <span> <i class="xi-trending-down"></i>34,670 <br> (10,330 할인) </span>
+                            </P>
+                        </div>
+                        <div>
+                            <p> 6/2(금)까지 38%할인 </p>
+                            <P>
+                                <span> 40,000 </span>
+                                <span> <i class="xi-trending-down"></i>24,800 <br> (15,200 할인) </span>
+                            </P>
+                        </div>
+                        <div>
+                            <p> &nbsp; </p>
+                            <P>
+                                <span> 30,000</span>
+                                <span> <i class="xi-trending-down"></i>22,800 </span>
+                            </P>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            </article>
+
+            <article class="ar02">
+                <div class="event">
+                    <h2>EVENT | COUPON </h2>
+                    <!--제목-->
+                    <div class="couponWrap">
+                        <div class="coupon01">
+                            <a href="#"> <img src="./img/쿠폰1.jpg" alt="coupon01"> </a>
+                        </div>
+                        <div class="coupon02">
+                            <a href="#"><img src="./img/쿠폰2.png" alt="coupon02">
+                            </a></div>
+                        <div class="coupon03">
+                            <a href="#"><img src="./img/쿠폰3.png" alt="coupon03">
+                            </a></div>
+                    </div>
+                </div>
+
+                <div class="offline">
+                    <h2> OFFLINE STORE </h2>
+                    <!--제목-->
+                    <div>
+                        <p>
+                            매장에서 백화점 전용 상품을 만나보실 수 있어요 :) <br><br>
+
+                            <mark>서울</mark> <br>
+                            코엑스몰점 (TEL : 02-6002-1960)<br>
+                            엔터식스 천호 (TEL : 02-6484-6109)<br>
+                            엔터식스 왕십리 (TEL : 02-2200-6103)<br>
+                            엔터식스 강남 (TEL : 02-6321-6107)<br>
+                            잠실 롯데월드몰점 (TEL : 02-3213-4208)<br>
+                            롯데몰 김포공항점 (TEL : 02-6116-5386)<br>
+                            NC백화점 강서점 (TEL : 02-2667-9570)<br>
+                            롯데영플라자 명동점 (TEL : 02-2118-5203)<br>
+                            구로 마리오점 (TEL : 02-2067-3633)<br><br>
+                            <mark>경기</mark><br>
+                            엔터식스 안양 (TEL : 031-5177-6135)<br>
+                            롯데아울렛 이천 (TEL : 031-887-4132)<br>
+                            스타필드 하남 (TEL : 031-8072-8541)<br>
+                            롯데백화점 평촌 (TEL : 031-8086-9547)<br>
+                            AK 수원점 (TEL : 031-240-1922)<br>
+                            롯데몰 수원점 (TEL : 031-8066-1770)<br><br>
+                            <mark>인천</mark><br>
+                            인천 스퀘어원점 (TEL : 032-456-4208)<br><br>
+                            <mark> 그 외 </mark><br>
+                            롯데백화점 상인 (TEL : 053-258-3178)<br>
+                            롯데백화점 대구 (TEL : 053-660-3921)<br>
+                            롯데몰 동부산점 (TEL : 051-901-2796)<br>
+                            NC백화점 서면 (TEL : 051-794-7370)<br>
+                            롯데백화점 부산본점 (TEL : 051-810-3792)<br>
+                            롯데백화점 센텀시티점 (TEL : 051-730-3466)<br>
+                            롯데백화점 대전 (TEL : 042-601-2271)<br>
+                            천안모다아울렛 (TEL : 070-7668-1517)<br>
+                            롯데영플라자 울산점 (TEL : 052-960-5315)<br>
+                            롯데백화점 창원점 (TEL : 055-279-2990)<br>
+                            전주 DK몰 (TEL : 063-255-0972)
+                        </p>
+                    </div> <!-- offline store 목록 -->
+                </div>
+
+                <div class="brand">
+                    <h2> BRAND CREW </h2>
+                    <!--제목-->
+                    <div>
+                        <video src="./img/video.mov" controls poster="./img/TWEE.jpg" width="615"> </video>
+                    </div> <!-- 동영상 -->
+                </div>
+            </article>
+
+            <article class="ar03">
+                <h2> NEW ARRIVAL :) </h2>
+
+                <!--more, 화살표-->
+                <div class="more">
+                    <a href="#">
+                        <img src="./img/MORE.png" alt="more">
+                        <p> more</p>
+                    </a>
+                </div>
+                <!-- 상품 상세설명 -->
+                <div class="new">
+                    <div class="photo02">
+                        <div>
+                            <div>
+                                <a href="#"> <img src="./img/NEW_OUTER.jpg" alt="outer02"></a>
+                            </div>
+                            <h3> OUTER </h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/NEW_TOP.jpg" alt="top02"></a></div>
+                            <h3> TOP </h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/NEW_PANTS.jpg" alt="pants02"></a></div>
+                            <h3> PANTS</h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/NEW_SKIRT.jpg" alt="skirt02"></a></div>
+                            <h3> SKIRT</h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/NEW_DRESS.jpg" alt="dress02"></a></div>
+                            <h3> DRESS </h3>
+                        </div>
+                        <div>
+                            <div> <a href="#"> <img src="./img/NEW_ETC.jpg" alt="etc02"></a></div>
+                            <h3> ETC </h3>
+                        </div>
+                    </div>
+
+                    <div class="detail02">
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% </p>
+                            <P> #제작 [tjk0313] </P>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 코리나 린넨 라운드 반팔 자켓 <i
+                                        class="fa-solid fa-heart fa-beat"></i> </a></p>
+                            <p> (린넨반팔자켓,여름자켓,여름하객룩, <br> 크롭자켓,린넨노카라) </p>
+                            <P> 린넨 10% </P>
+                        </div>
+
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% </p>
+                            <P> 여리숄더 <br> #제작 [tnt0456] </P>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 튜린 백리스 스퀘어 반팔 니트 <i
+                                        class="fa-solid fa-heart fa-beat"></i> </a></p>
+                            <p> (퍼프반팔니트, 백리본니트, <br> 반소매니트, 크롭반팔니트) </P>
+                            <P> </P>
+                        </div>
+
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% </p>
+                            <p> YKK지퍼 +5cm 여름면바지 <br> [tps0379] </p>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 데니안 부츠컷 팬츠 <i
+                                        class="fa-solid fa-heart fa-beat"></i> </a></p>
+                            <p> (면바지, 부츠컷바지, 롱부츠컷) </P>
+                            <p> YKK 지퍼 </p>
+                        </div>
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% | <i class="xi-gift-o"></i> 오늘출발 </p>
+                            <p> 치마바지 <br> #제작 [tsk0396] </p>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 펄링 트위드 미니스커트 <i
+                                        class="fa-solid fa-heart fa-beat"></i> </a></p>
+                            <p> (여름하객룩,트위드스커트, <br> A라인미니스커트) </P>
+                            <p> </p>
+                        </div>
+                        <div>
+                            <p> <i class="xi-sun-o"></i> Summer 50% | <i class="xi-gift-o"></i> 오늘출발 </p>
+                            <p> 여름하객룩 <br> #제작 [top0384] </p>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 지엘 스퀘어 퍼프 반팔 롱 원피스 <i
+                                        class="fa-solid fa-heart fa-beat"></i> </a></p>
+                            <p>(바캉스룩, 반팔롱원피스, <br> A라인롱원피스, 핀턱롱원피스) </p>
+                            <p> </p>
+                        </div>
+                        <div>
+                            <p> </p>
+                            <p> [tac0292] </p>
+                            <p> <a href="#"> <i class="fa-solid fa-heart fa-beat"></i> 포레니 미니 라탄 숄더백 <i
+                                        class="fa-solid fa-heart fa-beat"></i> </a></p>
+                            <p> </p>
+                            <P> </p>
+                        </div>
+                    </div>
+
+                    <div class="price02">
+                        <div>
+                            <p> 5/22(월)까지 31% 할인 </p>
+                            <p>
+                                <span> 52,000 </span>
+                                <span> <i class="xi-trending-down"></i> 35,800 <br> (16,200 할인) </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p> 5/22(월)까지 신상 추가 할인 </p>
+                            <p>
+                                <span> 32,000 </span>
+                                <span> <i class="xi-trending-down"></i> 23,560 <br> (8,440 할인) </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p> 5/22(월)까지 신상 추가 할인 </p>
+                            <p>
+                                <span> 55,000 </span>
+                                <span> <i class="xi-trending-down"></i> 40,660 <br> (14,340 할인) </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p> 5/22(월)까지 31% 할인 </p>
+                            <p>
+                                <span> 40,000 </span>
+                                <span> <i class="xi-trending-down"></i> 27,800 <br> (12,200 할인) </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p> </p>
+                            <p>
+                                <span> 45,000 </span>
+                                <span> <i class="xi-trending-down"></i> 36,800 </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p> </p>
+                            <p>
+                                <span> 30,000 </span>
+                                <span> <i class="xi-trending-down"></i> 22,800 </span>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+        </div>
+        </article>
+    </div>
+
+    <footer id="down">
+        <div class="company">
+            <p> COMPANY </p>
+            <p> BRAND NAME. 트위 (TWEE) OWNER. 이기현 <br>
+                COMPANY. 주식회사 티엔제이(TNJ) BUSINESS LICENSE. 107-87-91593 <br>
+                MAIL-ORDER LICENSE. 2015호-서울영등포-1428호 [사업자정보확인] PERSONAL INFO MANAGER. 이기현 <br>
+                ADDRESS : 07290 서울특별시 영등포구 경인로 727 (문래동2가) 종도빌딩 1F 트위 <br>
+                E-MAIL : TNJTWEE13@GMAIL.COM FAX. 02-2069-1961 <br>
+                COPYRIGHT © 트위 ALL RIGHTS RESERVED. <br> <br>
+            </p>
+            <p> 본 쇼핑몰에 사용된 모든이미지의 저작권과 초상권은 주식회사 티엔제이(TNJ)에 있으며 무단도용시 법적 처벌을 받을 수 있습니다.</p>
+        </div>
+
+        <div class="center">
+            <p>CUSTOMER CENTER</p>
+            <p>1522-9699 </p>
+            <p>운영시간 : 10:00 - 17:00 Lunch 12:00 - 13:00</p>
+            <p>토/일/공휴일(임시공휴일 포함) 휴무</p>
+            <p>예금주 : (주)티엔제이 / KEB하나은행 116-910022-50804</p>
+            <p>RETURN ADDRESS</p>
+            <p>서울시 금천구 가산동 459-8번지 CJ대한통운 관악SUB </p>
+            <p>직영1팀_에스엔패션그룹 트위 담당자 앞</p>
+            <p>고객센터 : 1522-9699</p>
+        </div>
+
+        <p class="home">
+            <span> <a href="#"> 홈으로 </a> </span>
+            <span> <a href="#"> 회사소개 </a></span>
+            <span> <a href="#"> 오프라인 매장안내 </a></span>
+            <span> <a href="#"> 이용약관 </a></span>
+            <span> <a href="#"> 개인정보 처리방침 </a></span>
+            <span> <a href="#"> 이용안내 </a></span>
+        </p>
+
+    </footer>
+
+    <aside>
+        <p class="button">
+            <a href="#"> UP </a>
+        </p>
+        <p class="button">
+            <a href="#down"> DOWN </a>
+        </p>
+    </aside>
+    </div>
+
+    <script>
+        $('.mainmenu>li').mouseover(function () {
+            $(this).find('.submenu>li').stop().slideDown(300);
+        });
+
+        $('.mainmenu>li').mouseout(function () {
+            $(this).find('.submenu>li').stop().slideUp(300);
+        });
+    </script>
+</body>
+
+</html>
